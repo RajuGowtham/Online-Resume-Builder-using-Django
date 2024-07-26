@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Resume Builder</title>
+    <link rel="stylesheet" href="styles.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/start.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Build Your Professional Resume Effortlessly</h1>
+            <p>Create a stunning resume with our easy-to-use online resume builder.</p>
+            <a href="{% url 'home' %}" class="btn">Build Now</a>
+        </div>
+    </header>
+    <main>
+        <section class="features">
+            <div class="container">
+                <h2>Why Choose Our Resume Builder?</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <i class="icon fas fa-file-alt"></i>
+                        <h3>Professional Templates</h3>
+                        <p>Choose from a variety of professionally designed templates to make your resume stand out.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="icon fas fa-edit"></i>
+                        <h3>Easy to Use</h3>
+                        <p>Our intuitive interface makes it simple to create a resume, even if you have no prior experience.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="icon fas fa-cloud-download-alt"></i>
+                        <h3>Download & Print</h3>
+                        <p>Download your resume in PDF format and print it easily from any device.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="icon fas fa-user-shield"></i>
+                        <h3>Privacy Protected</h3>
+                        <p>We take your privacy seriously. Your data is secure with us.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="testimonials">
+            <div class="container">
+                <h2>What Our Users Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-item">
+                        <p>"This resume builder is fantastic! I got my dream job thanks to the professional resume I created."</p>
+                        <h4>- John Doe</h4>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Super easy to use and the templates are beautiful. Highly recommend!"</p>
+                        <h4>- Jane Smith</h4>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"I loved how straightforward it was to create a resume. It saved me so much time."</p>
+                        <h4>- Sam Wilson</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Online Resume Builder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Resume Builder</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f9;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        header h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        header button {
+            background: #ff9800;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-container h2 {
+            border-bottom: 2px solid #ff9800;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .button-group {
+            margin-top: 10px;
+        }
+        .button-group button {
+            background: #ff9800;
+            border: none;
+            color: #fff;
+            padding: 10px 15px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .button-group button.add-btn {
+            background: #4caf50;
+        }
+        .button-group button.remove-btn {
+            background: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <!-- Semantic Html -->
+    <header>
+        <h1>Build Your Resume Fast!</h1>
+        <h3>Worried about creating a resume on your own? We are here to help!</h3>
+        <!-- <button>Build Now</button> -->
+    </header>
+
+    <!-- Form Section -->
+    <section id="personal_details">
+        <form action="{% url 'resume' %}" method="post">
+            {% csrf_token %}
+            <div class="form-container">
+                <h2>Personal Details</h2>
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="Enter first name" maxlength="25" minlength="2" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Enter last name" maxlength="25" minlength="2" required>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email:</label>
+                    <input type="email" id="userEmail" name="userEmail" placeholder="Enter email address" maxlength="50" minlength="5" required>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Mobile:</label>
+                    <input type="tel" id="mobile" name="mobile" placeholder="Enter mobile number" maxlength="10" minlength="10" required>
+                </div>
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn Profile:</label>
+                    <input type="text" id="linkedin" name="linkedin" placeholder="Enter LinkedIn profile link" maxlength="50" minlength="10" required>
+                </div>
+
+                <div id="education_details">
+                    <h2>Education Details</h2>
+                    <div class="form-group">
+                        <label for="degree">Degree:</label>
+                        <input type="text" id="degree" name="degree" placeholder="Enter degree" maxlength="50" minlength="2" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="institutionName">Institution Name:</label>
+                        <input type="text" id="institutionName" name="institutionName" placeholder="Enter institution name" maxlength="50" minlength="2" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="branch">Specialization:</label>
+                        <input type="text" id="branch" name="branch" placeholder="Enter your specialization" maxlength="50" minlength="2" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="graduationDate">Graduation Date:</label>
+                        <input type="text" id="graduationDate" name="graduationDate" placeholder="Enter graduation completion date" maxlength="10" minlength="2" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gpa">GPA:</label>
+                        <input type="text" id="gpa" name="gpa" placeholder="Enter grade points" maxlength="7" minlength="1" required>
+                    </div>
+                </div>
+
+                <div id="project_details">
+                    <h2>Project Details</h2>
+                    <div id="projects">
+                        <!-- Project Entries -->
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="add-btn" onclick="addProject()">Add Project</button>
+                    </div>
+                </div>
+
+                <div id="certifications">
+                    <h2>Certifications</h2>
+                    <div id="certificates">
+                        <!-- Certification Entries -->
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="add-btn" onclick="addCertification()">Add Certification</button>
+                    </div>
+                </div>
+
+                <div id="summary" class="form-group">
+                    <h2>Summary</h2>
+                    <textarea id="summary" name="summary" rows="5" placeholder="Write a brief summary about your profile..." required></textarea>
+                </div>
+
+                <div id="skill_details">
+                    <h2>Skills</h2>
+                    <div class="form-group">
+                        <label for="technicalSkills">Technical Skills:</label>
+                        <input type="text" id="technicalSkills" name="technicalSkills" placeholder="Programming languages known" maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="softSkills">Soft Skills:</label>
+                        <input type="text" id="softSkills" name="softSkills" placeholder="Known soft skills" maxlength="100" required>
+                    </div>
+                </div>
+
+                <div id="languages" class="form-group">
+                    <h2>Languages Known</h2>
+                    <input type="text" id="languages" name="languages" placeholder="e.g., Telugu, Hindi, English" maxlength="100" required>
+                </div>
+
+                <div id="awards_and_honours">
+                    <h2>Awards & Honours</h2>
+                    <div id="awards">
+                        <!-- Award Entries -->
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="add-btn" onclick="addAward()">Add Award</button>
+                    </div>
+                </div>
+
+                <div id="hobbies" class="form-group">
+                    <h2>Hobbies</h2>
+                    <textarea id="hobbies" name="hobbies" rows="5" placeholder="Mention your hobbies..." required></textarea>
+                </div>
+
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </section>
+
+    <script>
+        function addProject() {
+            const projectContainer = document.getElementById('projects');
+            const projectCount = projectContainer.children.length + 1;
+            const projectEntry = document.createElement('div');
+            projectEntry.className = 'form-group';
+            projectEntry.innerHTML = `
+                <h3>Project ${projectCount}</h3>
+                <label for="projectTitle${projectCount}">Project Title:</label>
+                <input type="text" id="projectTitle${projectCount}" name="projectTitle${projectCount}" placeholder="Enter Project title" required>
+                <label for="description${projectCount}">Description:</label>
+                <input type="text" id="description${projectCount}" name="description${projectCount}" placeholder="Enter project description" required>
+                <label for="technologiesUsed${projectCount}">Technologies Used:</label>
+                <input type="text" id="technologiesUsed${projectCount}" name="technologiesUsed${projectCount}" placeholder="Enter technologies used" required>
+                <label for="projectLink${projectCount}">Link to Project (if applicable):</label>
+                <input type="text" id="projectLink${projectCount}" name="projectLink${projectCount}" placeholder="Paste project link">
+                <button type="button" class="remove-btn" onclick="removeEntry(this)">Remove Project</button>
+            `;
+            projectContainer.appendChild(projectEntry);
+        }
+
+        function addCertification() {
+            const certificationContainer = document.getElementById('certificates');
+            const certificationCount = certificationContainer.children.length + 1;
+            const certificationEntry = document.createElement('div');
+            certificationEntry.className = 'form-group';
+            certificationEntry.innerHTML = `
+                <h3>Certification ${certificationCount}</h3>
+                <label for="certificateName${certificationCount}">Name of Certificate:</label>
+                <input type="text" id="certificateName${certificationCount}" name="certificateName${certificationCount}" placeholder="Enter certificate name" required>
+                <label for="issuedBy${certificationCount}">Issued by:</label>
+                <input type="text" id="issuedBy${certificationCount}" name="issuedBy${certificationCount}" placeholder="Organization name" required>
+                <label for="year${certificationCount}">Year:</label>
+                <input type="text" id="year${certificationCount}" name="year${certificationCount}" placeholder="Enter issued year" maxlength="4" minlength="4" required>
+                <button type="button" class="remove-btn" onclick="removeEntry(this)">Remove Certification</button>
+            `;
+            certificationContainer.appendChild(certificationEntry);
+        }
+
+        function addAward() {
+            const awardContainer = document.getElementById('awards');
+            const awardCount = awardContainer.children.length + 1;
+            const awardEntry = document.createElement('div');
+            awardEntry.className = 'form-group';
+            awardEntry.innerHTML = `
+                <h3>Award ${awardCount}</h3>
+                <label for="awardTitle${awardCount}">Award Title:</label>
+                <input type="text" id="awardTitle${awardCount}" name="awardTitle${awardCount}" placeholder="Enter award title" required>
+                <label for="issuedBy${awardCount}">Issued by:</label>
+                <input type="text" id="issuedBy${awardCount}" name="issuedBy${awardCount}" placeholder="Issued organization" required>
+                <label for="year${awardCount}">Year:</label>
+                <input type="text" id="year${awardCount}" name="year${awardCount}" placeholder="Issued year" maxlength="4" minlength="4" required>
+                <button type="button" class="remove-btn" onclick="removeEntry(this)">Remove Award</button>
+            `;
+            awardContainer.appendChild(awardEntry);
+        }
+
+        function removeEntry(button) {
+            button.parentElement.remove();
+        }
+    </script>
+</body>
+</html>

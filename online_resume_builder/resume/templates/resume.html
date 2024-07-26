@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/styles1.css' %}">
+</head>
+<body>
+    <section id="download-this" class="resume">
+        <div class="header">
+            <h1>{{ firstName }} {{ lastName }}</h1>
+            <p>{{ userEmail }} | {{ mobile }} | <a href="{{ linkedin }}" target="_blank">{{ linkedin }}</a></p>
+        </div>
+        <div class="section">
+            <h2>Education</h2>
+            <p><strong>{{ degree }}</strong> in {{ branch }}</p>
+            <p>{{ institutionName }} - Graduated {{ graduationDate }}</p>
+            <p>GPA: {{ gpa }}</p>
+        </div>
+        <div class="section">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>{{ projectTitle }}</h3>
+                <p>{{ description }}</p>
+                <p><em>Technologies used: </em>{{ technologiesUsed }}</p>
+                <p><a href="{{ projectLink }}" target="_blank">{{ projectLink }}</a></p>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Summary</h2>
+            <p>{{ summary }}</p>
+        </div>
+        <div class="section">
+            <h2>Skills</h2>
+            <ul>
+                <li><strong>Technical Skills:</strong> {{ technicalSkills }}</li>
+                <li><strong>Soft Skills:</strong> {{ softSkills }}</li>
+                <li><strong>Languages:</strong> {{ languages }}</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Certifications</h2>
+            <ul>
+                <li><strong>{{ certificateName }}</strong> - {{ issuedBy2 }} ({{ year2 }})</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Awards</h2>
+            <ul>
+                <li><strong>{{ awardTitle }}</strong> - {{ issuedBy1 }} ({{ year1 }})</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Hobbies</h2>
+            <p>{{ hobbies }}</p>
+        </div>
+    </section>
+
+    <button onclick="downloadThis()" class="download-button">Download</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function downloadThis(){
+            var element = document.getElementById('download-this');
+            html2pdf().from(element).save();
+        }
+    </script>
+</body>
+</html>

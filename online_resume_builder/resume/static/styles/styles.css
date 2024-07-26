@@ -1,0 +1,130 @@
+body{
+    margin: 0;
+    background-color: whitesmoke;
+ }
+
+ header{
+    background-image: url("https://www.monetta.co.uk/application/files/thumbnails/small/9616/2336/2029/bookkeeping-system.jpg") ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 150px;
+    text-align: center;
+    color: white;
+ }
+
+ header h1{
+    font-size: 36px;
+ }
+
+ header h3{
+    font-size: 26px;
+ }
+
+
+ header button, input[type="submit"]{
+    font-size: 18px;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+ }
+ header button:hover{
+    background-color: pink;
+    color: black;
+ }
+ #personal_details{
+    margin: 50px 100px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    float: left;
+    margin-left: 17%;
+ }
+ #personal_details input{
+    width: 47%;
+    height: 20px;
+ }
+ #personal_details label{
+    font-weight: bold;
+    margin-bottom: 10px;
+ }
+ #Education_details{
+   margin: 50px 100px;
+   /* border: 1px solid black; */
+   border-radius: 10px;
+   padding: 20px;
+   width: 47%;
+   margin-left: auto;
+   margin-right: auto;
+   float: right;
+   margin-left: 0%;
+   margin-top: -34.5%;
+ }
+ #Education_details input{
+    width: 100%;
+    height: 20px;
+ }
+ #Education_details label{
+    font-weight: bold;
+    margin-bottom: 10px;
+ }
+ #Project_details{
+   margin: 50px 100px;
+   /* border: 1px solid black; */
+   border-radius: 10px;
+   padding: 20px;
+   width: 47%;
+   margin-left: auto;
+   margin-right: auto;
+   float: right;
+   margin-left: 0%;
+   margin-top: -10%;
+ }
+ #Project_details input{
+   width: 100%;
+   height: 20px;
+}
+#Project_details label{
+   font-weight: bold;
+   margin-bottom: 10px;
+}
+#awardsandhonours{
+   margin: 50px 100px;
+   /* border: 1px solid black; */
+   border-radius: 10px;
+   padding: 20px;
+   width: 47%;
+   margin-left: auto;
+   margin-right: auto;
+   float: right;
+   margin-left: 0%;
+   margin-top: -52.5%;
+ }
+ #awardsandhonours input{
+   width: 100%;
+   height: 20px;
+}
+#awardsandhonours label{
+   font-weight: bold;
+   margin-bottom: 10px;
+}
+button{
+   margin-top: -20px;
+   margin-left: 37%;
+   padding: 10px;
+   width: 300px;
+   cursor: pointer;
+   background-color: black;
+   border-radius: 5px;
+   color: white;
+}
+button:hover{
+   background-color: whitesmoke;
+   color: black;
+}
+
